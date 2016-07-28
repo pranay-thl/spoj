@@ -20,3 +20,38 @@
 #define MOD 1000000007
 #define mod 10000007
 using namespace std;
+bool is_num(char a,char b)
+{
+	return ((a-'0')*10+b-'0')<=26&&((a-'0')*10+b-'0')>9?true:false;
+}
+LL solve(char *s)
+{
+	int l=strlen(s);
+	LL dp[l+1];
+	MEM(dp,0);
+	dp[0]=1;
+	REPP(i,1,l)
+	{
+		dp[i]=(s[i]-'0')==0?0:dp[i-1];
+		if(is_num(s[i-1],s[i]))
+		{
+			dp[i]+=dp[i-2<0?0:i-2];
+		}
+	}
+	return dp[l-1];
+}
+int main()
+{
+	char s[5001];
+	while(1)
+	{
+		INPS(s);
+		if(s[0]=='0')
+			break;
+		else
+		{
+			OUTLL(solve(s));
+		}
+	}
+	return 0;
+}
