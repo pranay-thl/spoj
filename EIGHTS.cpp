@@ -30,13 +30,14 @@ LL power10(LL n)
 LL a[4]={192,442,692,942};
 int main()
 {
-    LL n,r;
+    LL n,r,temp;
     TC
     {
         INPLL(n);
         r=n%4;
         r=1000*((n-1)/4)+a[r==0?3:r-1];
         OUTLL(r);
+        
     }
     return 0;
 }

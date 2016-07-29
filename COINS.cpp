@@ -20,21 +20,25 @@
 #define MOD 1000000007
 #define mod 10000007
 using namespace std;
-LL dp[1000000];
+
+map<LL,LL>mp;
+ 
 LL f(LL n)
 {
-    if(n==0)
-        return 0;
-    if(n<1000000)
-    {
-        if(!dp[n])
-        {
-            dp[n]=max(f(n/2)+f(n/3)+f(n/4),n);
-        }
-        return dp[n];
-    }
-    return max(f(n/2)+f(n/3)+f(n/4),n);
+if(n==0)
+	return 0;
+if(mp[n]>0)
+	return mp[n];
+else
+{
+	LL c;
+	c=max(n,((f(n/2)+f(n/3)+f(n/4))));
+	mp[n]=c;
+	return mp[n];
 }
+}
+
+
 int main()
 {
     LL n;
